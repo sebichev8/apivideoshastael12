@@ -53,10 +53,9 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     @Transactional
     public E update(ID id, E entity) throws Exception {
         try{
-            Optional<E> entityOptional = baseRepository.findById(id);
-            E entityUpdate = entityOptional.get();
-            entityUpdate = baseRepository.save(entity);
-            return entityUpdate;
+            if(baseRepository.existsById(id)) throw new Exception("no existe la entidad");
+            entity.setId((Long)id);
+            return baseRepository.save(entity);
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }

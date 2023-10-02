@@ -8,7 +8,7 @@ public class PrimeraApirestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PrimeraApirestApplication.class, args);
-		System.out.println("ando");
+		System.out.println("nashe");
 	}
 
 }
